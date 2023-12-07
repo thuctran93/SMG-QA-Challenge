@@ -1,0 +1,7 @@
+{
+    "baseUrl": "https://www.mediawiki.org/w",
+    "env": {
+      "wikiUrl": "https://en.wikipedia.org/wiki/Main_Page",
+      "searchUrl":"https://en.wikipedia.org/w/index.php?search=&title=Special%3ASearch"
+      }
+  }

@@ -1,0 +1,38 @@
+{
+  "name": "cypress-api",
+  "version": "1.0.0",
+  "description": "cypress automation framework api",
+  "main": "index.js",
+  "scripts": {
+    "triggerAllTests-headless": "npx cypress run",
+    "triggerAllTests-dashboard": "npx cypress run --record --key 726cc7b1-90f4-4ab0-8f43-90497bae87e9 --parallel",
+    "triggerAllTests-ownfleet-order": "npx cypress run --spec cypress/integration/ownfleet-order/add-ownfleet-order.spec.js --record --key 726cc7b1-90f4-4ab0-8f43-90497bae87e9",
+    "triggerAllTests-ownfleet-command": "npx cypress run --spec cypress/integration/ownfleet-order/add-ownfleet-commands.spec.js  --record --key 726cc7b1-90f4-4ab0-8f43-90497bae87e9 --parallel",
+    "triggerAllTests-schema-validate": "npx cypress run --spec cypress/integration/ownfleet-order/login-as-user.spec.js --record --key 726cc7b1-90f4-4ab0-8f43-90497bae87e9 --parallel",
+    "junit-merge": "npx junit-merge -d cypress/results/junit -o cypress/results/junit/results.xml",
+    "delete-junit-report": "rm -rf cypress/results/junit/results.xml",
+    "delete-results": "rm -rf cypress/results/* || true",
+    "mochawesome-merge": "npx mochawesome-merge cypress/results/mochawesome/*.json > mochawesome.json && npx marge mochawesome.json",
+    "delete-mochawesome-report": "rm -rf mochawesome-report/* || true",
+    "cypress-regression-pack": "npm run delete-results && npm run delete-mochawesome-report && npm run triggerAllTests-headless && npm run mochawesome-merge",
+    "triggerAllTests-staging": "npx cypress run --config-file cypress/config/staging.json",
+    "cy:open": "cypress open",
+    "cy:development": "cypress open --env fileConfig=development",
+    "cy:stage": "cypress open --env fileConfig=stage"
+  },
+  "author": "Thuc",
+  "license": "ISC",
+  "devDependencies": {
+    "ajv": "^8.11.0",
+    "cypress": "^12.2.0",
+    "cypress-multi-reporters": "^1.6.1",
+    "cypress-xpath": "^2.0.1",
+    "mocha-junit-reporter": "^2.0.2",
+    "mochawesome": "^7.1.3",
+    "mochawesome-merge": "^4.2.1",
+    "mochawesome-report-generator": "^6.2.0"
+  },
+  "dependencies": {
+    "node-xlsx": "^0.21.0"
+  }
+}
